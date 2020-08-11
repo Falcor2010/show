@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+	<head>
+		<title>
+			Alticator Show
+		</title>
+		<link rel="stylesheet" href="ui.css">
+	</head>
+	<body>
+		<img id="watermark" src="logo.png" style="display: none">
+		<div id="logo-watermark" style="display: none">
+			<div id="logo-watermark-container">
+				<h6 style="margin-top: 0;">
+					Powered by
+				</h6>
+				<h1 style="font-size: 72px">
+					Alticator Show
+				</h1>
+			</div>
+		</div>
+		<div id="lightbar1" style="visibility: hidden">
+			<div class="lightbar1-light" id="lightbar1-light-aqua"></div>
+			<div class="lightbar1-light" id="lightbar1-light-red"></div>
+			<div class="lightbar1-light" id="lightbar1-light-yellow"></div>
+			<div class="lightbar1-light" id="lightbar1-light-green"></div>
+			<div class="lightbar1-light" id="lightbar1-light-blue"></div>
+			<div class="lightbar1-light" id="lightbar1-light-magenta"></div>
+		</div>
+		<div id="lightbar2" style="visibility: hidden">
+			<div class="lightbar2-light" id="lightbar2-light1" style="background-color: red"></div>
+			<div class="lightbar2-light" id="lightbar2-light2" style="background-color: orange"></div>
+			<div class="lightbar2-light" id="lightbar2-light3" style="background-color: yellow"></div>
+			<div class="lightbar2-light" id="lightbar2-light4" style="background-color: #00df25"></div>
+			<div class="lightbar2-light" id="lightbar2-light5" style="background-color: dodgerblue"></div>
+			<div class="lightbar2-light" id="lightbar2-light6" style="background-color: darkmagenta"></div>
+			<div class="lightbar2-light" id="lightbar2-light7" style="background-color: magenta"></div>
+			<div class="lightbar2-light" id="lightbar2-light8" style="background-color: aqua"></div>
+		</div>
+		<div id="lightbar3" style="visibility: hidden;"></div>
+		<div class="slide" id="startScreen">
+			<h1>
+				Alticator Show
+			</h1>
+			<p>
+				Keyboard Shortcuts:	<br><br>
+				
+				Next Slide - Arrow Right or Arrow Up <br>
+				Previous Slide - Arrow Left or Arrow Down <br>
+				Show / Hide Mouse Cursor - M <br>
+				Show / Hide Scrolling Light Bar - 1 <br>
+				Show / Hide Rainbow Light Bar - 2 <br>
+				Show / Hide Gradient Light Bar - 3 <br>
+				Show / Hide Watermark - W 
+			</p>
+			<button id="startButton" onclick="startPresentation(6);">
+				Start Presentation
+			</button>
+		</div>
+		<div class="slide" id="slide-1" style="display: none; background-color: #505050; padding: 10px;">
+			<h1 style="text-align: center; font-size: 72px;">
+				Slide 1
+			</h1>
+			<p style="font-size: 24px;">
+				This is the first slide in the presentation. <br>
+				Here's some <i>italic</i>, <b>bold</b> and <span style="color: aqua">colored</span> text.
+			</p>
+		</div>
+		<div class="slide" id="slide-2" style="display: none; background-color: #505050; padding: 10px;">
+			<h1 style="text-align: center; font-size: 72px;">
+				Slide 2
+			</h1>
+			<p style="font-size: 24px;">
+				This is the second slide in the presentation. <br>
+				Here's some <i>italic</i>, <b>bold</b> and <span style="color: aqua">colored</span> text.
+			</p>
+		</div>
+		<div class="slide" id="slide-3" style="display: none; position: relative;">
+			<div style="font-size: 36px; padding: 3px; border: 5px solid white; width: 60%; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center;">
+				Animated Background
+			</div>
+		</div>
+		<div class="slide" id="slide-4" style="display: none">
+			<video id="slide-4-video" src="example.mp4" style="width: 100%; height: 100%"></video>
+		</div>
+		<div class="slide" id="slide-5" style="display: none">
+			<h1>
+				The video has ended
+			</h1>
+		</div>
+		<div class="slide" id="slide-6" style="display: none">
+			<iframe src="embed.html" style="background-color: white; width: 100vw; height: 100vh; border: none;"></iframe>
+			<button style="position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);">
+				Move Focus Back to Presentation
+			</button>
+		<script src="jquery.min.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>

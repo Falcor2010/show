@@ -1,0 +1,51 @@
+/*
+	Alticator 2020
+*/
+
+* {font-family: sans-serif; box-sizing: border-box;}
+html, body {margin: 0; font-family: sans-serif;}
+body {background-color: black; color: white; font-size: 14px;}
+.slide {width: 100vw; height: 100vh; margin: 0; animation-name: turn-in; animation-duration: 1s;}
+#startScreen {background-color: #505050; text-align: center;}
+h1 {margin: 0;}
+#startScreen h1 {font-size: 72px; text-align: center; padding-top: 10%;}
+button {background-color: rgb(0, 150, 210); color: white; border: none; font-size: 24px; transition: 0.5s;}
+button:hover {box-shadow: 0 0 20px rgb(0, 150, 210);}
+#startScreen button {margin-top: 15px;}
+#lightbar1 {width: 100vw; height: 15px; overflow: hidden; position: fixed; left: 0; top: 0; z-index: 1;}
+.lightbar1-light {width: 15vw; height: 15px; animation-name: lightbar-slide; animation-duration: 3s; animation-iteration-count: infinite; animation-timing-function: linear; position: fixed; left: -15vw; top: 0;}
+#lightbar1-light-aqua {background: linear-gradient(to right, transparent, aqua, transparent); animation-delay: 0s;}
+#lightbar1-light-red {background: linear-gradient(to right, transparent, red, transparent); animation-delay: 0.5s;}
+#lightbar1-light-yellow {background: linear-gradient(to right, transparent, yellow, transparent); animation-delay: 1s;}
+#lightbar1-light-green {background: linear-gradient(to right, transparent, #00df25, transparent); animation-delay: 1.5s;}
+#lightbar1-light-blue {background: linear-gradient(to right, transparent, blue, transparent); animation-delay: 2s;}
+#lightbar1-light-magenta {background: linear-gradient(to right, transparent, magenta, transparent); animation-delay: 2.5s;}
+#lightbar2 {width: 100vw; height: 15px; overflow: hidden; position: fixed; left: 0; top: 0; display: flex; z-index: }
+.lightbar2-light {width: calc(100vw / 4); height: 15px; top: 0; position: relative; flex-grow: 1; background-color: green;}
+#lightbar3 {width: 100vw; height: 25px; position: fixed; left: 0; top: 0; background: linear-gradient(-45deg, #ee7750, magenta, #23a6d5, #23d5ab); background-size: 400% 400%; animation-name: gradient-animation; animation-duration: 10s; animation-iteration-count: infinite; z-index: 3;}
+#watermark {position: fixed; left: 0; top: 0; z-index: 1; width: 100px; animation-name: watermark-in; animation-duration: 0.5s; perspective: 200px; z-index: 5;}
+#logo-watermark {position: fixed; width: 100vw; left: 0; top: 50vh; text-align: center; font-size: 36px; animation-name: watermark-in; animation-duration: 0.5s; z-index: 4;}
+#logo-watermark-container {width: 50vw; margin: auto; background-color: #505050; border-radius: 25px; padding: 10px; box-shadow: inset 0 0 100px #303030;}
+#slide-3 {background: linear-gradient(-45deg, #ee7750, magenta, #23a6d5, #23d5ab); background-size: 400% 400%; animation-name: gradient-animation; animation-duration: 10s; animation-iteration-count: infinite;}
+
+@keyframes watermark-in {
+	from {transform: rotateY(45deg) rotateX(45deg); opacity: 0;}
+	to {transform: rotateY(0); opacity: 1;}
+}
+
+@keyframes turn-in {
+	from {filter: grayscale(100%) blur(2px); opacity: 1;}
+	to {filter: grayscale(0%) blur(0px); opacity: 1;}
+}
+
+@keyframes lightbar-slide {
+	0% {left: -15vw; filter: hue-rotate(180deg);}
+	50% {filter: hue-rotate(0deg);}
+	100% {left: 100vw; filter: hue-rotate(-180deg);}
+}
+
+@keyframes gradient-animation {
+	0% {background-position: 0% 50%;}
+	50% {background-position: 100% 50%;}
+	100% {background-position: 0% 50%;}
+}
