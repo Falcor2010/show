@@ -5,7 +5,9 @@
 * {font-family: sans-serif; box-sizing: border-box;}
 html, body {margin: 0; font-family: sans-serif;}
 body {background-color: black; color: white; font-size: 14px;}
-.slide {width: 100vw; height: 100vh; margin: 0; animation-name: turn-in; animation-duration: 1s;}
+.slide {position: relative; left: 0; width: 100vw; height: 100vh; margin: 0; transition: 0.5s;}
+.off-screen {left: -100vw;}
+.transparent {opacity: 0;}
 #startScreen {background-color: #505050; text-align: center;}
 h1 {margin: 0;}
 #startScreen h1 {font-size: 72px; text-align: center; padding-top: 10%;}

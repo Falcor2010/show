@@ -1,13 +1,13 @@
 <!doctype html>
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>
 			Alticator Show Documentation
 		</title>
 		<style>
 			* {font-family: sans-serif;}
 			body {margin: 0; background-color: dodgerblue; font-size: 18px; text-align: center;}
-			.blog {background-color: gray;}
 			.no-underline {text-decoration: none;}
 			code {background-color: lightgray; border: 2px solid gray; padding: 2px; font-size: 14px;}
 			h1 {color: white; text-align: center;}
@@ -19,31 +19,39 @@
 			table {margin: auto;}
 			a {color: dodgerblue;}
 			footer {position: fixed; left: 0; bottom: 0; border-top: 3px solid white; padding: 5px; box-sizing: border-box; max-height: 50px; width: 100%; color: white; background-color: dodgerblue;}
-			.article-link {background-color: dodgerblue; padding: 5px;}
-			.article-link a {color: white;}
 		</style>
 	</head>
 	<body>
-		<a href="/" class="no-underline">
-			<h1>
-				Alticator Documentation
-			</h1>
-		</a>
+		<h1>
+			Alticator Documentation
+		</h1>
 		<div class="container">
 			<h2>
 				Alticator Show - Create Seamless Presentations
 			</h2>
-			<h3>
+			<h2>
 				Overview
-			</h3>
+			</h2>
 			<p>
 				Create seamless and professional presentations and control up to two screens. You can create custom animations and automatic functions that make your presentations look seamless. You can even have two different slideshows on two different screens and control both with one keyboard. Welcome to Alticator Show!
 			</p>
-			<h3>
+			<h2>
 				Documentation
+			</h2>
+			<p>
+				To create a presentation, the easiest way is to copy the program files to a folder and start editing them. To change the number of slides, create new slide elements and update the point where <code>startPresentation(a, b)</code> (a = number of slides on display 1, b = number of slides on display 2) is run To start the presentation, simply open the <code>index.html</code> file. Put it fullscreen, press <code>Start Presentation</code> and the presentation is on.
+			</p>
+			<h3>
+				Secondary Screen
 			</h3>
 			<p>
-				To create a presentation, the easiest way is to copy the program files to a folder and start editing them. To start the presentation, simply open the <code>index.html</code> file. Put it fullscreen, press <code>Start Presentation</code> and the presentation is on.
+				To get started, the easiest way is to just start editing the <code>second-screen.html</code> file. When you have created the presentation there, open the main presentation and press <code>S</code>. That will open a second window. If it opens as a tab, close it, try exiting fullscreen mode and pressing <code>S</code> again. If that doesn't work, the problem might be in your browser's settings. If the window doesn't open at all, see if your browser has blocked it. You can also try running it from a server. When you have the window, just move it to the second screen and put it fullscreen.
+				
+				When you have the second screen set up, you can change slides by pressing <code>,</code> and <code>.</code> for going back and forwards, respectively. To show and hide the light bars, press <code>4</code> for the scrolling light bar, <code>5</code> for the rainbow light bar and <code>6</code> for the gradient light bar.
+			</p>
+			<h2>
+				Quick Info
+			</h2>
 				<ol>
 					<li>Press <code>S</code> to open a window for the second display. If it opens as a tab, you can try exiting fullscreen mode, refreshing the page and trying again. If it doesn't open at all, check if your browser has blocked the popup. When you get the new window, simply move it to your second screen and put in on fullscreen mode.
 					</li>
@@ -59,6 +67,80 @@
 						More information on the start page of Alticator Show (The page visible when you open a presentation).
 					</li>
 			</ol>
+			<h3>
+				Developer Info
+			</h3>
+			<p>
+				Here are some variables and functions that can make creating custom presentations, developing and debugging easier.
+			</p>
+			<table>
+				<tr>
+					<th>
+						Name
+					</th>
+					<th>
+						Type
+					</th>
+					<th>
+						Description
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<b>screen2</b>
+					</td>
+					<td>
+						<i>Variable</i>
+					</td>
+					<td>
+						Contains the second screen. Undefined if the second screen is not on. <code>screen2.document</code> is the document element for the second screen used to control it.
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>nextSlide(displayNumber)</b>
+					</td>
+					<td>
+						<i>Function</i>
+					</td>
+					<td>
+						<code>nextSlide()</code> changes the slide for the primary display and <code>nextSlide(2)</code> changes the slide on the second display. If <code>displayNumber</code> is set to something else, the slide is changed on the primary display.
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>previousSlide()</b>
+					</td>
+					<td>
+						<i>Function</i>
+					</td>
+					<td>
+						Used the same way as <code>nextSlide()</code>, but goes back a slide.
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>slideNumber</b>
+					</td>
+					<td>
+						<i>Variable</i>
+					</td>
+					<td>
+						The number of the current slide. Set to <code>0</code> before the presentation is started.
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<b>slideAmount</b>
+					</td>
+					<td>
+						<i>Variable</i>
+					</td>
+					<td>
+						The amount of slides. Set by the <code>startPresentation(numberOfSlides)</code>, which sets it to the value of <code>numberOfSlides</code>
+					</td>
+				</tr>
+			</table>
 		</div>
 		<footer>
 			Alticator Open Source Projects
