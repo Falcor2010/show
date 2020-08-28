@@ -2,11 +2,14 @@
 
 var slideAmount = 0;
 var slideNumber = 0;
+var screen2On = false;
 var screen2SlideAmount = 0;
 var screen2SlideNumber = 0;
 var mouseVisible = true;
 var watermarkVisible = false;
 var logoWatermarkVisible = false;
+var screen2WatermarkVisible = false;
+var screen2LogoWatermarkVisible = false;
 var lightbar1Visible = false;
 var lightbar2Visible = false;
 var lightbar3Visible = false;
@@ -25,14 +28,15 @@ function startPresentation(numberOfSlides, screen2NumberOfSlides) {
 	mouseVisible = false;
 	$("#startScreen").hide();
 	$("#slide-1").show();
-	$(screen2.document.getElementById("startScreen")).hide();
-	$(screen2.document.getElementById("slide-1")).show();
+	if (screen2On) {
+		$(screen2.document.getElementById("startScreen")).hide();
+		$(screen2.document.getElementById("slide-1")).show();
+	}
 	slideNumber = 1;
 }
 
 function nextSlide(screenNumber) {
 	if (screenNumber === 2) {
-		console.log("Screen 2 Selected");
 		if (screen2SlideNumber < screen2SlideAmount) {
 			screen2SlideNumber++;
 			$(screen2.document.getElementsByClassName("slide")).hide();
@@ -43,11 +47,21 @@ function nextSlide(screenNumber) {
 	else {
 		if (slideNumber < slideAmount) {
 			slideNumber++;
-			$(".slide").hide();
-			$("#slide-" + slideNumber).show();
-			slideFunctions();
+			$("#slide-" + (slideNumber - 1)).addClass("off-screen");
+			delay500(function() {
+				$(".slide").hide();
+				$(".slide").removeClass("off-screen");
+				$("#slide-" + slideNumber).addClass("transparent");
+				$("#slide-" + slideNumber).show();
+				$(".slide").removeClass("transparent");
+				slideFunctions();
+			});
 		}
 	}
+}
+
+function delay500(code) {
+	setTimeout(code, 500);
 }
 
 function nextSlide$2() {
@@ -129,45 +143,69 @@ function keyPress(event) {
 			logoWatermarkVisible = true;
 		}
 	}
+	else if (event.key == "q") {
+		if (screen2On) {
+			if (screen2WatermarkVisible) {
+				$(screen2.document.getElementById("watermark")).hide();
+				screen2WatermarkVisible = false;
+			}
+			else {
+				$(screen2.document.getElementById("watermark")).show();
+				screen2WatermarkVisible = true;
+			}
+		}
+	}
+	else if (event.key == ";") {
+		if (screen2On) {
+			if (screen2LogoWatermarkVisible) {
+				$(screen2.document.getElementById("logo-watermark")).hide();
+				screen2LogoWatermarkVisible = false;
+			}
+			else {
+				$(screen2.document.getElementById("logo-watermark")).show();
+				screen2LogoWatermarkVisible = true;
+			}
+		}
+	}
 	else if (event.key == "1") {
 		if (lightbar1Visible == false) {
-			$("#lightbar1").css("visibility", "visible");
+			$("#lightbar1").show();
 			lightbar1Visible = true;
 		}
 		else if (lightbar1Visible) {
-			$("#lightbar1").css("visibility", "hidden");
+			$("#lightbar1").hide();
 			lightbar1Visible = false;
 		}
 	}
 	else if (event.key == "2") {
 		if (lightbar2Visible == false) {
-			$("#lightbar2").css("visibility", "visible");
+			$("#lightbar2").show();
 			lightbar2Visible = true;
 		}
 		else if (lightbar2Visible) {
 			lightbar2States = [0, 0, 0, 0, 0, 0, 0, 0];
 			updateLightbar2States();
-			$("#lightbar2").css("visibility", "hidden");
+			$("#lightbar2").hide();
 			lightbar2Visible = false;
 		}
 	}
 	else if (event.key == "3") {
 		if (lightbar3Visible == false) {
-			$("#lightbar3").css("visibility", "visible");
+			$("#lightbar3").show();
 			lightbar3Visible = true;
 		}
 		else if (lightbar3Visible) {
-			$("#lightbar3").css("visibility", "hidden");
+			$("#lightbar3").hide();
 			lightbar3Visible = false;
 		}
 	}
 	else if (event.key == "4") {
 		if (screen2Lightbar1Visible == false) {
-			$(screen2.document.getElementById("lightbar1")).css("visibility", "visible");
+			$(screen2.document.getElementById("lightbar1")).show();
 			screen2Lightbar1Visible = true;
 		}
 		else if (screen2Lightbar1Visible) {
-			$(screen2.document.getElementById("lightbar1")).css("visibility", "hidden");
+			$(screen2.document.getElementById("lightbar1")).hide();
 			screen2Lightbar1Visible = false;
 		}
 	}
@@ -183,16 +221,22 @@ function keyPress(event) {
 	}
 	else if (event.key == "6") {
 		if (screen2Lightbar3Visible == false) {
-			$(screen2.document.getElementById("lightbar3")).css("visibility", "visible");
+			$(screen2.document.getElementById("lightbar3")).show();
 			screen2Lightbar3Visible = true;
 		}
 		else if (screen2Lightbar3Visible) {
-			$(screen2.document.getElementById("lightbar3")).css("visibility", "hidden");
+			$(screen2.document.getElementById("lightbar3")).hide();
 			screen2Lightbar3Visible = false;
 		}
 	}
 	else if (event.key == "s") {
-		screen2 = window.open("second-screen.html", "Second Screen", "height=200, width=500");
+		if (screen2 = window.open("second-screen.html", "Second Screen", "height=500, width=1000")) {
+			screen2On = true;
+			screen2SlideNumber = 1;
+			if (screen2On) {
+				screen2.document.getElementById("slide-4-video").onended = nextSlide$2;
+			}
+		}
 	}
 }
 
@@ -269,4 +313,3 @@ function changeLightbar2ColorLoopReverse() {
 }
 
 document.getElementById("slide-4-video").onended = nextSlide;
-screen2.document.getElementById("slide-4-video").onended = nextSlide$2;
