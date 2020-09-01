@@ -19,6 +19,8 @@
 			table {margin: auto;}
 			a {color: dodgerblue;}
 			footer {position: fixed; left: 0; bottom: 0; border-top: 3px solid white; padding: 5px; box-sizing: border-box; max-height: 50px; width: 100%; color: white; background-color: dodgerblue;}
+			.text-align-left {text-align: left;}
+			pre {text-align: left;}
 		</style>
 	</head>
 	<body>
@@ -40,6 +42,27 @@
 			</h2>
 			<p>
 				To create a presentation, the easiest way is to copy the program files to a folder and start editing them. To change the number of slides, create new slide elements and update the point where <code>startPresentation(a, b)</code> (a = number of slides on display 1, b = number of slides on display 2) is run To start the presentation, simply open the <code>index.html</code> file. Put it fullscreen, press <code>Start Presentation</code> and the presentation is on.
+			</p>
+			<h3>
+				Creating and Deleting Slides
+			</h3>
+			<p>
+			To have a presentation, creating slides is one of the main things. And here's how to do it:
+				First, copy the code below to the code. Simply put it below the point where the previous slide ends.<br>
+				Code:
+			</p>
+				<pre style="background-color: lightgray; border: 2px solid gray; font-family: monospace;">
+&lt;div class="slide" id="slide-1" style="display: none; background-color: #505050; padding: 10px;">
+	&lt;h1 style="text-align: center; font-size: 72px;">
+		Slide Title
+	&lt;/h1&gt;
+	&lt;p style="font-size: 24px;">
+		Slide Content Here
+	&lt;/p>
+&lt;/div>
+				</pre>
+			<p>
+				Just change the <code>id="slide-1"</code> so that the number mathces the number
 			</p>
 			<h3>
 				Secondary Screen
