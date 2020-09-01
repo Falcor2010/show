@@ -18,6 +18,17 @@
 				</h1>
 			</div>
 		</div>
+		<div class="modal-container" id="modal-embed">
+			<div class="modal">
+				<button onclick="closeModal()" class="close">&times;</button>
+				<div class="header">
+					Embedded Webpage
+				</div>
+				<div class="content">
+					<iframe src="embed.html" style="background-color: white; width: 100%; height: 500px; border: none;"></iframe>
+				</div>
+			</div>
+		</div>
 		<div id="lightbar1" style="display: none">
 			<div class="lightbar1-light" id="lightbar1-light-aqua"></div>
 			<div class="lightbar1-light" id="lightbar1-light-red"></div>
@@ -80,7 +91,9 @@
 			</h1>
 			<p style="font-size: 24px;">
 				This is the second slide in the presentation. <br>
-				Here's some <i>italic</i>, <b>bold</b> and <span style="color: aqua">colored</span> text.
+				Here's some <i>italic</i>, <b>bold</b> and <span style="color: aqua">colored</span> text. <br>
+				Here's a link that opens in a modal: <button onclick="openModal()">click here</button> <br>
+				To click the link, show/hide the mouse pointer by pressing M on your keyboard
 			</p>
 		</div>
 		<div class="slide" id="slide-3" style="display: none; position: relative;">
@@ -101,6 +114,7 @@
 			<button style="position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);">
 				Move Focus Back to Presentation
 			</button>
+		</div>
 		<script src="jquery.min.js"></script>
 		<script src="app.js"></script>
 	</body>

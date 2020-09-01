@@ -100,6 +100,16 @@ function screen2SlideFunctions() {
 	}
 }
 
+function openModal() {
+	$("#modal-embed").show();
+	$(".slide").addClass("blur");
+}
+
+function closeModal() {
+	$("#modal-embed").hide();
+	$(".slide").removeClass("blur");
+}
+
 function keyPress(event) {
 	if (event.key == "m") {
 		if (mouseVisible == false) {
